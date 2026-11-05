@@ -1,0 +1,43 @@
+<!doctype html>
+{% extends "base.html" %} {% block title %}Diskussioner Forum för fårskallar{%
+endblock %} {% block content %}
+
+<div class="page-heading">
+  <h1>Diskussioner</h1>
+  <p>Här hittar du alla pågående diskussioner.</p>
+</div>
+
+{% if session.get("username") %}
+<a class="button" href="{{ url_for('create_topic') }}">
+  + Skapa ny diskussion
+</a>
+{% else %}
+<p>
+  <a href="{{ url_for('login') }}">Logga in</a>
+  för att skapa en ny diskussion.
+</p>
+{% endif %}
+
+<div class="topic-list">
+  {% for topic in topics %}
+
+  <div class="topic-card">
+    <h2>
+      <a href="{{ url_for('topic', topic_id=topic['id']) }}">
+        {{ topic["title"] }}
+      </a>
+    </h2>
+
+    <p>Skapad av: <strong>{{ topic["username"] }}</strong></p>
+
+    <small>{{ topic["created_at"] }}</small>
+  </div>
+
+  {% else %}
+
+  <p>Det finns inga diskussioner ännu.</p>
+
+  {% endfor %}
+</div>
+
+{% endblock %}

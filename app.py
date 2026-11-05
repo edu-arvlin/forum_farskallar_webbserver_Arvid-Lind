@@ -197,7 +197,6 @@ def topic(topic_id):
         conn.close()
         return "Diskussionen kunde inte hittas.", 404
 
-    # Hantera ett nytt svar.
     if request.method == "POST":
 
         if "user_id" not in session:

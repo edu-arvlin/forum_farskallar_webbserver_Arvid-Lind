@@ -1,0 +1,63 @@
+<!doctype html>
+{% extends "base.html" %} {% block title %}{{ topic["title"] }} - Forum för
+fårskallar{% endblock %} {% block content %}
+
+<div class="page-heading">
+  <h1>{{ topic["title"] }}</h1>
+
+  <p>Startad av <strong>{{ topic["username"] }}</strong></p>
+
+  <small>{{ topic["created_at"] }}</small>
+</div>
+
+<h2>Inlägg</h2>
+
+<div class="post-list">
+  {% for post in posts %}
+
+  <div class="post-card">
+    <p class="post-content">{{ post["content"] }}</p>
+
+    <div class="post-info">
+      Skrivet av <strong>{{ post["username"] }}</strong>
+      <span>{{ post["created_at"] }}</span>
+    </div>
+  </div>
+
+  {% else %}
+
+  <p>Det finns inga inlägg i diskussionen ännu.</p>
+
+  {% endfor %}
+</div>
+
+{% if session.get("username") %}
+
+<div class="form-box">
+  <h2>Skriv ett svar</h2>
+
+  <form method="POST">
+    <label for="content">Ditt svar</label>
+    <textarea
+      id="content"
+      name="content"
+      placeholder="Skriv ditt svar här..."
+      required
+    ></textarea>
+
+    <button type="submit">Skicka svar</button>
+  </form>
+</div>
+
+{% else %}
+
+<p>
+  <a href="{{ url_for('login') }}">Logga in</a>
+  för att svara i diskussionen.
+</p>
+
+{% endif %}
+
+<a href="{{ url_for('topics') }}">← Tillbaka till diskussionerna</a>
+
+{% endblock %}

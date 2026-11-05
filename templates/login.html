@@ -1,0 +1,22 @@
+<!doctype html>
+{% extends "base.html" %} {% block title %}Logga in Forum för fårskallar{%
+endblock %} {% block content %}
+
+<div class="form-box">
+  <h1>Logga in</h1>
+
+  <form method="POST">
+    <label for="username">Användarnamn</label>
+    <input type="text" id="username" name="username" required />
+
+    <label for="password">Lösenord</label>
+    <input type="password" id="password" name="password" required />
+
+    <button type="submit">Logga in</button>
+  </form>
+
+  <p>Har du inget konto?</p>
+  <a href="{{ url_for('register') }}">Skapa ett konto</a>
+</div>
+
+{% endblock %}

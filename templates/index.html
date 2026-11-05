@@ -1,0 +1,27 @@
+<!doctype html>
+{% extends "base.html" %} {% block title %}Startsida Forum för fårskallar{%
+endblock %} {% block content %}
+
+<div class="welcome">
+  <h1>Välkommen till Forum för fårskallar</h1>
+
+  <p>Ett forum där du kan diskutera med fårskallar</p>
+
+  {% if session.get("username") %}
+
+  <h2>Välkommen, {{ session["username"] }}!</h2>
+
+  <a class="button" href="{{ url_for('topics') }}"> Gå till diskussionerna </a>
+
+  {% else %}
+
+  <p>Logga in eller skapa ett konto för att delta i diskussionerna</p>
+
+  <a class="button" href="{{ url_for('login') }}">Logga in</a>
+
+  <a class="button secondary" href="{{ url_for('register') }}"> Skapa konto </a>
+
+  {% endif %}
+</div>
+
+{% endblock %}
