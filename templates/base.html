@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Forum för fårskallar{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <a class="logo" href="{{ url_for('index') }}">Forum för fårskallar</a>
+
+        <nav>
+          <a href="{{ url_for('topics') }}">Diskussioner</a>
+
+          {% if session.get("username") %}
+          <a href="{{ url_for('create_topic') }}">Skapa tråd</a>
+          <a href="{{ url_for('logout') }}">Logga ut</a>
+          {% else %}
+          <a href="{{ url_for('login') }}">Logga in</a>
+          <a href="{{ url_for('register') }}">Registrera</a>
+          {% endif %}
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %} {% for
+      category, message in messages %}
+      <p class="message {{ category }}">{{ message }}</p>
+      {% endfor %} {% endwith %} {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+      <p>Forum för fårskallar</p>
+    </footer>
+  </body>
+</html>
