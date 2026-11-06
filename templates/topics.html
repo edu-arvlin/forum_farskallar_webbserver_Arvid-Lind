@@ -4,17 +4,15 @@ endblock %} {% block content %}
 
 <div class="page-heading">
   <h1>Diskussioner</h1>
-  <p>Här hittar du alla pågående diskussioner.</p>
+  <p>Här hittar du alla diskussioner</p>
 </div>
 
 {% if session.get("username") %}
-<a class="button" href="{{ url_for('create_topic') }}">
-  + Skapa ny diskussion
-</a>
+<a class="button" href="{{ url_for('create_topic') }}"> Skapa ny diskussion </a>
 {% else %}
 <p>
   <a href="{{ url_for('login') }}">Logga in</a>
-  för att skapa en ny diskussion.
+  för att skapa en ny diskussion
 </p>
 {% endif %}
 
@@ -35,7 +33,7 @@ endblock %} {% block content %}
 
   {% else %}
 
-  <p>Det finns inga diskussioner ännu.</p>
+  <p>Det finns inga diskussioner ännu</p>
 
   {% endfor %}
 </div>

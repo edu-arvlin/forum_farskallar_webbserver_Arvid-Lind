@@ -26,7 +26,7 @@ fårskallar{% endblock %} {% block content %}
 
   {% else %}
 
-  <p>Det finns inga inlägg i diskussionen ännu.</p>
+  <p>Det finns inga inlägg i diskussionen ännu</p>
 
   {% endfor %}
 </div>
@@ -53,11 +53,11 @@ fårskallar{% endblock %} {% block content %}
 
 <p>
   <a href="{{ url_for('login') }}">Logga in</a>
-  för att svara i diskussionen.
+  för att svara i diskussionen
 </p>
 
 {% endif %}
 
-<a href="{{ url_for('topics') }}">← Tillbaka till diskussionerna</a>
+<a href="{{ url_for('topics') }}">Tillbaka till diskussionerna</a>
 
 {% endblock %}
